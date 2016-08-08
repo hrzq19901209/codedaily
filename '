@@ -1,0 +1,30 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+void bubbleSort(int a[], int size){
+    bool swap = true;
+    for(int i=size-1; i>=1; i--){
+        if(!swap){
+            break;    
+        }
+        swap = false;
+        for(int j=0; j<i-1; j++){
+            if(a[j]>a[j+1]){
+                int temp = a[j];
+                a[j] = a[j+1];
+                a[j+1] = temp;
+                swap = true;
+            }    
+        }
+    }
+}
+
+void print(int n){
+    cout << n << " ";        
+}
+
+int main(){
+    int a[]={5,1,8,2,10,2,34};        
+}
