@@ -8,7 +8,7 @@ using namespace std;
 
 vector<int> getNext(string s){
     int len = s.size();
-    if(len < 0){
+    if(len == 0){
         vector<int> next;
         return next;
     }
@@ -64,7 +64,8 @@ bool rotate(string s1, string s2){
         return false;    
     }else{
         string s1s1 = s1+s1;
-        if(isSubstring(s1s1, s2)){
+//        if(isSubstring(s1s1, s2)){
+        if(strstr(s1s1.data(), s2.data()) != NULL){
             return true;    
         }
         return false;
