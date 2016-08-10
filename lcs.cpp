@@ -36,7 +36,8 @@ void print(int i){
     cout << i << " ";
 }
 int main(int argc, char* argv[]){
-    int a[] = {1, -2, 3, 10, -4, 7, 2, -5};
+    int a[] = {-10, -2, -3, -10, -4, -7, -2, -5};
+    //int a[] = {1, -2, 3, 10, -4, 7, 2, -5};
     for_each(a, a+8, print);
     cout << endl;
     int start, end;
