@@ -64,7 +64,6 @@ int main(int argc, char* argv[]){
         memset(ips, 0, sizeof(unsigned)*LEN);
     }
     delete[] ips;
-    cout << targetIp << endl;
     unsigned char* result = (unsigned char*)(&targetIp);
     printf("出现次数最多的 IP 为:%d.%d.%d.%d,共出现%d 次\n",
     result[0], result[1], result[2], result[3], count);
