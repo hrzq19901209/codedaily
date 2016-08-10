@@ -36,6 +36,7 @@ public:
         ++*this;
         return tmp;
     }
+
     MyIterator& operator=(Node* p){
         ptr = p;
         return *this;
@@ -85,7 +86,9 @@ List* remove(List *head){
     return head;
 }
 
-
+void test(List *head){
+    head = head->next;        
+}
 int main(int argc, char *argv[]){
     List n1(5);
     List n2(5);
@@ -98,13 +101,15 @@ int main(int argc, char *argv[]){
     n3.next = &n4;
     n4.next = &n5;
     n5.next = &n6;
+    test(&n1);
     MyIterator<List> begin(&n1);
     MyIterator<List> end;
+
     for_each(begin, end, print);
-    cout << endl;
-    List *r = remove(&n1);
-    begin = r;
-    for_each(begin, end, print);
-    cout << endl;
+    //cout << endl;
+    //List *r = remove(&n1);
+    //begin = r;
+    //for_each(begin, end, print);
+    //cout << endl;
     return 0;
 }
