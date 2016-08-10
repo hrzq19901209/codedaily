@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdio.h>
 
 #define N 32
 #define FILEINDEX(x) x>>27
@@ -64,12 +65,9 @@ int main(int argc, char* argv[]){
     }
     delete[] ips;
     cout << targetIp << endl;
-    //unsigned char* result = (unsigned char*)(&targetIp);
-    //cout << result[0] << "."; //认为ip的写入是大端法
-    //cout << result[1] << ".";
-    //cout << result[2] << ".";
-    //cout << result[3] << endl;
-    cout << count << endl;
+    unsigned char* result = (unsigned char*)(&targetIp);
+    printf("出现次数最多的 IP 为:%d.%d.%d.%d,共出现%d 次\n",
+    result[0], result[1], result[2], result[3], count);
 
     return 0;
 }
