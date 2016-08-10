@@ -14,8 +14,11 @@
 
 using namespace std;
 
+char* format = "ip%d.data";
+char* ipdata = "ip.data";
+
 void makeData(const int& n){
-    ofstream outfile("ip.data", ios::out | ios::binary);
+    ofstream outfile(ipdata, ios::out | ios::binary);
     srand((unsigned)(time(NULL)));
     if(outfile){
         for(int i=0; i<n; i++){
@@ -32,11 +35,11 @@ int main(int argc, char* argv[]){
     fstream files[N];
     for(int i=0; i<N; i++){
         char path[128];
-        sprintf(path, "ip%d.data", i);
+        sprintf(path, format, i);
         files[i].open(path, ios::trunc | ios::in | ios::out | ios::binary);
     }
 
-    ifstream infile("ip.data", ios::in | ios::binary);
+    ifstream infile(ipdata, ios::in | ios::binary);
     unsigned ip;
     while(infile.read((char *)&ip, sizeof(unsigned))){
         int fileIndex = FILEINDEX(ip);
@@ -67,6 +70,13 @@ int main(int argc, char* argv[]){
     unsigned char* result = (unsigned char*)(&targetIp);
     printf("出现次数最多的 IP 为:%d.%d.%d.%d,共出现%d 次\n",
     result[0], result[1], result[2], result[3], count);
+
+    for(int i=0; i<N; i++){
+        char path[128];
+        sprintf(path, format, i);
+        remove(path);
+    }
+    remove(ipdata);
 
     return 0;
 }
