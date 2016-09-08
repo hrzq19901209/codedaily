@@ -4,37 +4,30 @@
 #include <iostream>
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
-double maxCJ(double a[], int n){
-    double maxProduct = 1;
-    double minCurrent = 1;
-    double maxCurrent = 1;
-    for(int i=0; i<n; i++){
-        if(a[i] > 0){
-            maxProduct *= a[i];
-            minCurrent *= a[i];
-            if(maxCurrent > maxProduct){
-                maxProduct = maxCurrent;    
-            }
-        }else if(a[i] < 0){
-            double temp = minCurrent;
-            minCurrent = maxCurrent*a[i]; 
-            maxCurrent = temp*a[i];
-            if(maxCurrent > maxProduct){
-                maxProduct = maxCurrent;    
-            }
-        }else{
-            if(0 > maxProduct){
-                maxProduct = 0;    
-            }
+double max(double a, double b){
+    return a>b ? a:b;        
+}
 
-            maxProduct = 1;
-            minCurrent = 1;
-        }
+double min(double a, double b){
+    return a<b ? a:b;        
+}
+
+double maxCJ(double a[], int n){
+    vector<double> maxArr(n);
+    vector<double> minArr(n);
+    maxArr[0] = a[0];
+    minArr[0] = a[0];
+    double ans = a[0];
+    for(int i=1; i<n; i++){
+        maxArr[i] = max(max(a[i], maxArr[i-1]*a[i]), minArr[i-1]*a[i]);
+        minArr[i] = min(min(a[i], maxArr[i-1]*a[i]), minArr[i-1]*a[i]);
+        ans = max(maxArr[i], ans);
     }
-    return maxProduct;
+    return ans;
 }
 
 void print(double n){

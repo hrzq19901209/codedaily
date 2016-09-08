@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int lcs(int a[], int n, int* start, int *end){
+int maxsum(int a[], int n, int* start, int *end){
     if(n < 1){
         exit(1);    
     }
@@ -41,7 +41,7 @@ int main(int argc, char* argv[]){
     for_each(a, a+8, print);
     cout << endl;
     int start, end;
-    cout << lcs(a, 8, &start, &end) << endl;
+    cout << maxsum(a, 8, &start, &end) << endl;
     cout << "start:" << start << " end:"<< end << endl;
     for_each(a+start, a+end+1, print);
     cout << endl;

@@ -1,3 +1,5 @@
+//对于topK问题的另外一个解法是使用堆，但是做法是先对前K个数创建堆，K之后的数更新堆
+//这种适合数据不是特别大的情况，数据特别大的话还是要使用堆
 #include <iostream>
 #include <vector>
 #include <algorithm>
